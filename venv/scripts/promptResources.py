@@ -101,7 +101,7 @@ def getBaseKnowledgePrompt():
 def sampleFormat():
     return """
     
-    Please generate the response as a JSON object with an array of activities. Each activity should have the keys: 'activity', 'date', 'startingTime', 'endingTime', and 'description'. Fill in the 'activity' with the name of the activity which has to be one of the activities in the list, the 'date' with the specific date in the format DD/MM/YYYY HH:MM, and the 'description' with the description of the activity. Fill in the 'startingTime' and 'endingTime' with the specific time in the format HH:MM.
+    Please generate the response as a JSON object with an array of activities. Each activity should have the keys: 'activity', 'date', 'startingTime', 'endingTime', and 'description'. Fill in the 'activity' with the name of the activity which has to be one of the activities in the list, the 'date' with the specific date in the format DD/MM/YYYY (do not include the hours in the date field), and the 'description' with the description of the activity. Fill in the 'startingTime' and 'endingTime' with the specific time in the format HH:MM.
     The output must contain only the JSON, starting with '{' and ending with '}'.
    Sample JSON:
     {

@@ -5,9 +5,11 @@ from responseGenerator import generateSummary
 from audioTranscriber import generateAudioTranscription
 import os
 import uuid
-import json
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app, resources={r"/summarize": {"origins": "*"}})
+CORS(app, resources={r"/audioSummary": {"origins": "*"}})
 
 @app.route('/summarize', methods=['POST'])
 def summarize():
@@ -42,10 +44,11 @@ def summarizeAudio():
     audio_file.save(audio_path)
 
     transcription = generateAudioTranscription(audio_path)
+    print(transcription)
+    print("\n\n")
     transcriptionDict = {"text": transcription}
     transcriptionDict.update(request.form)
-    print(type(transcriptionDict))
-    print("\n\n")
+
 
     return jsonify(generateSummary(transcriptionDict))
 
